@@ -24,7 +24,11 @@ In your project's Gruntfile, add a section named `dev_prod_switch` to the data o
 
 ```js
 grunt.initConfig({
-	options: {
+    
+// ... other stuff
+    
+dev_prod_switch: {
+    options: {
         environment: 'prod' // 'prod' or 'dev'
     },
     all: {
@@ -34,7 +38,27 @@ grunt.initConfig({
             'app/some-file.html': 'app/some-file.html' // source: destination
         }
     }
+},
+    
+// ... other stuff
+    
 })
+```
+
+In html place code depending on environment as follows:
+
+```
+<!-- env:dev -->
+    <h1>For devs eyes only</h1>
+    <p>This will be visable in 'dev' environment</p>
+<!-- env:dev:end -->
+
+
+<!-- env:prod -->
+    <h1>For everyone</h1>
+    <p>This will be visable in 'prod' environment</p>
+<!-- env:prod:end -->
+
 ```
 
 ### Options
