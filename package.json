@@ -1,0 +1,43 @@
+{
+  "name": "grunt-dev-prod-switch",
+  "description": "Use to replace previously defined HTML comment blocks in project files to easy switching environment from development to production and back.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/sanusart/grunt-dev-prod-switch",
+  "author": {
+    "name": "Sasha Khamkov",
+    "email": "sanusart@gmail.com",
+    "url": "http://sanusart.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sanusart/grunt-dev-prod-switch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanusart/grunt-dev-prod-switch/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sanusart/grunt-dev-prod-switch/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
