@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('dev_prod_switch', 'Use to replace previously defined HTML comment blocks in project files to easy switching environment from development to production and back.', function() {
+  grunt.registerMultiTask('dev_prod_switch', 'Use to switch between previously defined HTML comment blocks in project files to change environment from development to production and back.', function() {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options();

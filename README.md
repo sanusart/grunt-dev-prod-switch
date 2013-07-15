@@ -1,6 +1,6 @@
 # grunt-dev-prod-switch
 
-> Use to replace previously defined HTML comment blocks in project files to easy switching environment from development to production and back.
+> Use to switch between previously defined HTML comment blocks in project files to change environment from development to production and back.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
