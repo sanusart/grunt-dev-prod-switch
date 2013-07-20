@@ -1,6 +1,6 @@
 # grunt-dev-prod-switch
 
-> Use to switch between previously defined HTML comment blocks in project files to change environment from development to production and back.
+> Use to switch between previously defined comment blocks in project files to change environment from development to production and back.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -25,29 +25,33 @@ In your project's Gruntfile, add a section named `dev_prod_switch` to the data o
 ```js
 grunt.initConfig({
     
-// ... other stuff
+...
     
 dev_prod_switch: {
-    options: {
-        environment: 'prod' // 'prod' or 'dev'
-    },
-    all: {
-        files: {
-            'app/index.html': 'app/index.html', // source: destination 
-            'app/templates/file.html': 'app/templates/file.html', // source: destination
-            'app/some-file.html': 'app/some-file.html' // source: destination
+            options: {
+                environment: 'dev',
+                char: '#',
+                env_block_dev: 'env:dev',
+                env_block_prod: 'env:prod'
+            },
+            all: {
+                files: {
+                    'app/index.html': 'app/index.html',
+                    'app/js/main.js': 'app/js/main.js'
+                }
+            }
         }
-    }
-},
     
-// ... other stuff
+...
     
-})
+});
 ```
 
-In html place code depending on environment as follows:
+In _html_ or _ColdFusion_ type of files place the code depending on environment as follows:
 
 ```
+...
+
 <!-- env:dev -->
     <h1>For devs eyes only</h1>
     <p>This will be visable in 'dev' environment</p>
@@ -59,15 +63,67 @@ In html place code depending on environment as follows:
     <p>This will be visable in 'prod' environment</p>
 <!-- env:prod:end -->
 
+...
+
 ```
+
+In _C_, _Java_, _JavaScript_ type of files place the code depending on environment as follows:
+
+```
+...
+
+/* env:dev */
+    function add(a,b) { 
+        console.log('ADD: ' + a + ' + ' + b + ' = ' + (a + b));
+        return a+b;
+    }
+/* env:dev:end */
+
+
+/* env:prod */
+    function add(a,b) { 
+        return a+b;
+    }
+/* env:prod:end */
+
+...
+
+```
+
 
 ### Options
 
-#### options.environment
+#### options.environment _(requered)_
 Type: `String`
 Default value: NONE
 
 A string value that is used to do define the environment.
 
+#### options.char _(optional)_
+Type: `String`
+Default value: '#'
+
+Default character to block the comment.
+
+#### options.env_block_dev _(optional)_
+Type: `String`
+Default value: 'env:dev'
+
+Override the default string of the comment. 
+So the task will be searching for `<!-- env:dev -->` comment blocks
+
+#### options.env_block_prod _(optional)_
+Type: `String`
+Default value: 'env:prod'
+
+Override the default string of the comment. 
+So the task will be searching for `<!-- env:prod -->` comment blocks
+
+
 ## Release History
-_(Nothing yet)_
+#### 0.1.3
+* Add: Override options
+* Add: Support for files with `/* comment */` comments styles
+
+#### 0.1.2
+* It's a live
