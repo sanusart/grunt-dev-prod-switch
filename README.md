@@ -121,6 +121,9 @@ So the task will be searching for `<!-- env:prod -->` comment blocks
 
 
 ## Release History
+#### 0.1.4
+* Fix: Oops, used reserved word.
+
 #### 0.1.3
 * Add: Override options
 * Add: Support for files with `/* comment */` comments styles
