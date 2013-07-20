@@ -99,7 +99,7 @@ Default value: NONE
 
 A string value that is used to do define the environment.
 
-#### options.char _(optional)_
+#### options.env_char _(optional)_
 Type: `String`
 Default value: '#'
 
