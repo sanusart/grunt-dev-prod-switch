@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options();
-        var blocking_char = ((options.char) ? options.char : '#');
+        var blocking_char = ((options.env_char) ? options.env_char : '#');
         var env_prod = (options.env_block_prod) ? options.env_block_prod : 'env:prod';
         var env_dev = (options.env_block_dev) ? options.env_block_dev : 'env:dev';
 

@@ -30,7 +30,7 @@ grunt.initConfig({
 dev_prod_switch: {
             options: {
                 environment: 'dev',
-                char: '#',
+                env_char: '#',
                 env_block_dev: 'env:dev',
                 env_block_prod: 'env:prod'
             },
