@@ -1,5 +1,7 @@
 # grunt-dev-prod-switch
 
+[![NPM](https://nodei.co/npm/grunt-dev-prod-switch.png)](https://nodei.co/npm/grunt-dev-prod-switch/)
+
 > Use to switch between previously defined comment blocks in project files to change environment from development to production and back.
 
 ## Getting Started
