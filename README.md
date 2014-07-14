@@ -122,6 +122,53 @@ In _C_, _Java_, _JavaScript_ type of files place the code depending on environme
 
 ```
 
+### Using in Gulp without plug-in
+
+```js
+
+// Options to switch environment (dev/prod)
+var env_option = {
+    env_dev: 'env:dev',
+    env_prod: 'env:prod',
+    blocking_char: '#'
+};
+
+/**
+ * dev
+ *
+ * Change environment to "development"
+ * Use: gulp dev
+ */
+gulp.task('dev', function() {
+    var files = ['./app/index.html'];
+    files.forEach(function(file) {
+        var content = fs.readFileSync(file, "utf8")
+            .replace('<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_dev + ' -->')
+            .replace('<!-- ' + env_option.env_prod + ' -->', '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
+            .replace('/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_dev + ' */')
+            .replace('/* ' + env_option.env_prod + ' */', '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
+        fs.writeFileSync(file, content);
+    });
+});
+
+/**
+ * prod
+ *
+ * Change environment to "production"
+ * Use: gulp prod
+ */
+gulp.task('prod', [], function() {
+    var files = ['./app/index.html'];
+    files.forEach(function(file) {
+        var content = fs.readFileSync(file, "utf8")
+            .replace('<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_prod + ' -->')
+            .replace('<!-- ' + env_option.env_dev + ' -->', '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
+            .replace('/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_prod + ' */')
+            .replace('/* ' + env_option.env_dev + ' */', '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
+        fs.writeFileSync(file, content);
+    });
+});
+```
 
 ### Options
 
