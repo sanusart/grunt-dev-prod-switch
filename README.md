@@ -29,21 +29,51 @@ grunt.initConfig({
     
 ...
     
-dev_prod_switch: {
-            options: {
-                environment: 'dev',
-                env_char: '#',
-                env_block_dev: 'env:dev',
-                env_block_prod: 'env:prod'
-            },
-            all: {
-                files: {
-                    'app/index.html': 'app/index.html',
-                    'app/js/main.js': 'app/js/main.js'
-                }
+    dev_prod_switch: {
+        options: {
+            environment: 'dev',
+            env_char: '#',
+            env_block_dev: 'env:dev',
+            env_block_prod: 'env:prod'
+        },
+        all: {
+            files: {
+                'app/index.html': 'app/index.html',
+                'app/js/main.js': 'app/js/main.js'
             }
         }
+    }
     
+...
+    
+});
+```
+
+Or 
+
+```js
+grunt.initConfig({
+    
+...
+    
+    dev_prod_switch: {
+        options: {
+            // Can be ran as `grunt --env=dev` or ``grunt --env=prod``
+            environment: grunt.option('env') || 'dev', // 'prod' or 'dev'
+            env_char: '#',
+            env_block_dev: 'env:dev',
+            env_block_prod: 'env:prod'
+        },
+        dynamic_mappings: {
+            files: [{
+                expand: true,
+                cwd: './',
+                src: ['*.html'],
+                dest: './'
+            }]
+        }
+    }
+
 ...
     
 });
