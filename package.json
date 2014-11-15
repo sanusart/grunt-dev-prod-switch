@@ -1,12 +1,12 @@
 {
   "name": "grunt-dev-prod-switch",
   "description": "Use to switch between previously defined block comment blocks in project files to change environment from development to production and back.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/sanusart/grunt-dev-prod-switch",
   "author": {
     "name": "Sasha Khamkov",
     "email": "sanusart@gmail.com",
-    "url": "http://sanusart.com"
+    "url": "https://sanusart.com"
   },
   "repository": {
     "type": "git",

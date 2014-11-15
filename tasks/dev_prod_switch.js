@@ -26,29 +26,29 @@ module.exports = function (grunt) {
         this.files.forEach(function (f) {
             var out = f.src.map(function (src) {
                 if (options.environment === 'prod') {
-                    var result = grunt.file.read(src, 'utf8')
-                        .replace('<!-- ' + env_prod + ' --' + blocking_char + '>', '<!-- ' + env_prod + ' -->')
-                        .replace('<!-- ' + env_dev + ' -->', '<!-- ' + env_dev + ' --' + blocking_char + '>')
-                        .replace('<!-- ' + env_test + ' -->', '<!-- ' + env_test + ' --' + blocking_char + '>')
-                        .replace('/* ' + env_prod + ' *' + blocking_char + '/', '/* ' + env_prod + ' */')
-                        .replace('/* ' + env_dev + ' */', '/* ' + env_dev + ' *' + blocking_char + '/')
-                        .replace('/* ' + env_test + ' */', '/* ' + env_test + ' *' + blocking_char + '/');
-                } else if (options.environment === 'dev') {
-                    var result = grunt.file.read(src, 'utf8')
-                        .replace('<!-- ' + env_dev + ' --' + blocking_char + '>', '<!-- ' + env_dev + ' -->')
-                        .replace('<!-- ' + env_prod + ' -->', '<!-- ' + env_prod + ' --' + blocking_char + '>')
-                        .replace('<!-- ' + env_test + ' -->', '<!-- ' + env_test + ' --' + blocking_char + '>')
-                        .replace('/* ' + env_dev + ' *' + blocking_char + '/', '/* ' + env_dev + ' */')
-                        .replace('/* ' + env_prod + ' */', '/* ' + env_prod + ' *' + blocking_char + '/')
-                        .replace('/* ' + env_test + ' */', '/* ' + env_test + ' *' + blocking_char + '/');
-                } else if (options.environment === 'test') {
-                    var result = grunt.file.read(src, 'utf8')
-                        .replace('<!-- ' + env_test + ' --' + blocking_char + '>', '<!-- ' + env_test + ' -->')
-                        .replace('<!-- ' + env_prod + ' -->', '<!-- ' + env_prod + ' --' + blocking_char + '>')
-                        .replace('<!-- ' + env_dev + ' -->', '<!-- ' + env_dev + ' --' + blocking_char + '>')
-                        .replace('/* ' + env_test + ' *' + blocking_char + '/', '/* ' + env_test + ' */')
-                        .replace('/* ' + env_prod + ' */', '/* ' + env_prod + ' *' + blocking_char + '/')
-                        .replace('/* ' + env_dev + ' */', '/* ' + env_dev + ' *' + blocking_char + '/');
+                    var result = grunt.file.read(src, "utf8")
+                        .replace(new RegExp("<\!-- " + env_prod + " --" + blocking_char + ">","gi"), "<!-- " + env_prod + " -->")
+                        .replace(new RegExp("<\!-- " + env_dev + " -->","gi"), "<!-- " + env_dev + " --" + blocking_char + ">")
+                        .replace(new RegExp("<\!-- " + env_test + " -->","gi"), "<!-- " + env_test + " --" + blocking_char + ">")
+                        .replace("/* " + env_prod + " *" + blocking_char+"/", "/* " + env_prod + " */")
+                        .replace("/* " + env_dev + " */", "/* " + env_dev + " *" + blocking_char+"/")
+                        .replace("/* " + env_test + " */", "/* " + env_test + " *" + blocking_char+"/");
+                } else if (options.environment === "dev") {
+                    var result = grunt.file.read(src, "utf8")
+                        .replace(new RegExp("<\!-- " + env_dev + " --" + blocking_char + ">","gi"), "<!-- " + env_dev + " -->")
+                        .replace(new RegExp("<\!-- " + env_prod + " -->","gi"), "<!-- " + env_prod + " --" + blocking_char + ">")
+                        .replace(new RegExp("<\!-- " + env_test + " -->","gi"), "<!-- " + env_test + " --" + blocking_char + ">")
+                        .replace("/* " + env_dev + " *" + blocking_char+"/", "/* " + env_dev + " */")
+                        .replace("/* " + env_prod + " */", "/* " + env_prod + " *" + blocking_char + "/")
+                        .replace("/* " + env_test + " */", "/* " + env_test + " *" + blocking_char + "/");
+                } else if (options.environment === "test") {
+                    var result = grunt.file.read(src, "utf8")
+                        .replace(new RegExp("<\!-- " + env_test + " --" + blocking_char + ">","gi"), "<!-- " + env_test + " -->")
+                        .replace(new RegExp("<\!-- " + env_prod + " -->","gi"), "<!-- " + env_prod + " --" + blocking_char + ">")
+                        .replace(new RegExp("<\!-- " + env_dev + " -->","gi"), "<!-- " + env_dev + " --" + blocking_char + ">")
+                        .replace("/* " + env_test + " *" + blocking_char+"/", "/* " + env_test + " */")
+                        .replace("/* " + env_prod + " */", "/* " + env_prod + " *" + blocking_char + "/")
+                        .replace("/* " + env_dev + " */", "/* " + env_dev + " *" + blocking_char + "/");
                 } else {
                     grunt.log.writeln('Please set "environment" in options object.');
                 }

@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sasha Khamkov <sanusart@gmail.com> (https://sanusart.com/)",
+  "license": "none",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-dev-prod-switch": "file:.."
+  }
+}

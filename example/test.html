@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!-- env:dev -->
+<h1>For devs eyes only</h1>
+<p>This will be visable in 'dev' environment</p>
+<!-- env:dev:end -->
+
+
+<!-- env:prod --#>
+<h1>For everyone</h1>
+<p>This will be visable in 'prod' environment</p>
+<!-- env:prod:end -->
+
+
+<script>
+    /* env:dev */
+    function add(a,b) {
+        console.log('ADD: ' + a + ' + ' + b + ' = ' + (a + b));
+        return a+b;
+    }
+    /* env:dev:end */
+
+
+    /* env:prod *#/
+    function add(a,b) {
+        return a+b;
+    }
+    /* env:prod:end */
+
+    add(2,2);
+</script>
+
+</body>
+</html>

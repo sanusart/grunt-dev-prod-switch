@@ -140,13 +140,15 @@ var env_option = {
  * Use: gulp dev
  */
 gulp.task('dev', function() {
-    var files = ['./app/index.html'];
+    var files = [
+        './app/index.html'
+    ];
     files.forEach(function(file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_dev + ' -->')
-            .replace('<!-- ' + env_option.env_prod + ' -->', '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
-            .replace('/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_dev + ' */')
-            .replace('/* ' + env_option.env_prod + ' */', '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
+            .replace(new RegExp("<\!-- " + env_option.env_dev + " --" + env_option.blocking_char + ">","gi"), '<!-- ' + env_option.env_dev + ' -->')
+            .replace(new RegExp("<\!-- " + env_option.env_prod + " -->","gi"), '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
+            .replace(new RegExp("\/\* " + env_option.env_dev + " \*" + env_option.blocking_char + '/',"gi"), '/* ' + env_option.env_dev + ' */')
+            .replace(new RegExp("\/\* " + env_option.env_prod + " \*\/","gi"), '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
     });
 });
@@ -158,13 +160,15 @@ gulp.task('dev', function() {
  * Use: gulp prod
  */
 gulp.task('prod', [], function() {
-    var files = ['./app/index.html'];
+    var files = [
+        './app/index.html'
+    ];
     files.forEach(function(file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_prod + ' -->')
-            .replace('<!-- ' + env_option.env_dev + ' -->', '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
-            .replace('/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_prod + ' */')
-            .replace('/* ' + env_option.env_dev + ' */', '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
+            .replace(new RegExp("<\!-- " + env_option.env_prod + " --" + env_option.blocking_char + ">","gi"), '<!-- ' + env_option.env_prod + ' -->')
+            .replace(new RegExp("<\!-- " + env_option.env_dev + " -->","gi"), '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
+            .replace(new RegExp("\/\* " + env_option.env_prod + " \*" + env_option.blocking_char + '/',"gi"), '/* ' + env_option.env_prod + ' */')
+            .replace(new RegExp("\/\* " + env_option.env_dev + " \*\/","gi"), '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
     });
 });
@@ -197,15 +201,3 @@ Default value: 'env:prod'
 
 Override the default string of the comment. 
 So the task will be searching for `<!-- env:prod -->` comment blocks
-
-
-## Release History
-#### 0.1.4
-* Fix: Oops, used reserved word.
-
-#### 0.1.3
-* Add: Override options
-* Add: Support for files with `/* comment */` comments styles
-
-#### 0.1.2
-* It's a live
